@@ -1,47 +1,35 @@
 import { Component } from "react";
 import Todo from "../Todo/component";
-import { TODO_STATE } from "../../constant";
-
-const tododb = [
-    {id:1, label:"physics", etat:TODO_STATE.DONE},
-    {id:2, label:"Maths", etat:TODO_STATE.INPROGRESS},
-    {id:3, label:"Science", etat:TODO_STATE.TODO},
-]
 
 class TodoList extends Component{
-    constructor(props){
-      super(props); // You don't need to pass this to super()
-      this.state = {
-        todos : tododb
-      }
-    }
-
-    deleteTodo = (id)=>{
+    // apres qu'on a configurer redux delete et add vient des props 
+    /**deleteTodo = (id)=>{
         this.setState({todos: this.state.todos.filter((todo=>todo.id !== id))})
-    }
+    } */
 
-    addTodo=() =>{
+    /**addTodo=() =>{
       this.setState(
         [...this.state.todos, {id:5, label:"physics", etat:TODO_STATE.DONE}] 
       )
-    }
+    } */
 
-    updateTodo = (updatedtodo) => {
+    /**updateTodo = (updatedtodo) => {
        this.setState({ todos: 
         this.state.todos.map((todo) => {
-          if(todo.id == updatedtodo.id) return updatedtodo;
+          if(todo.id === updatedtodo.id) return updatedtodo;
           return todo;
         })}
        )
     }
+   */
 
     render(){
         return <>
            <div>
-              <button onClick={this.addTodo} >Add Todo</button>
+              <button onClick={this.props.addTodo} >Add Todo</button>
            </div>
-          {this.state.todos.map(e=> (
-             <Todo updateTodo={this.updateTodo}  deleteTodo={this.deleteTodo} key={e.id}  id={e.id}  label={e.label} etat={e.etat} />
+          {(this.props.todos).map(todo => (
+             <Todo key={todo.id} id={todo.id} label={todo.label} etat={todo.etat} />
           ))} 
         </>
     }

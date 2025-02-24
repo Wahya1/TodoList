@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import TodoList from "./components/TodoList/component";
 import "./App.css";
+import TodoListContainer from "./components/TodoList";
 
 class Header extends Component{
   render()
@@ -57,7 +57,7 @@ class App extends Component{
              <Settings  name={name} lastname={lastname}  handlChange={this.handlChange}/>
           </div>
           <h2>Todo List</h2>
-             <TodoList/>
+             <TodoListContainer/>
         </div>
       )
   }

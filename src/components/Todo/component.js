@@ -1,7 +1,8 @@
-import { Component, lazy } from "react";
+import { Component } from "react";
 import { TODO_STATE } from "../../constant";
 import "./style.css";
-
+import { connect } from "react-redux";
+import { deleteTodo, updateTodo } from "../../redux/todoReducer/action";
 
 class Todo extends Component{
     // No need to spread state (...state) → setState
@@ -36,4 +37,10 @@ class Todo extends Component{
     }
 }
 
-export default Todo;
+
+const mapDispatchToProps ={
+    deleteTodo,
+    updateTodo
+}
+
+export default connect(null, mapDispatchToProps)(Todo);

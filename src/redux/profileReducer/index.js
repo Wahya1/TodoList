@@ -4,5 +4,8 @@ const initialState={
     id:5
 }
 
-const profileReducer =(state = initialState, action) => {return state;}
+const profileReducer =(state=initialState, action)=> {
+    return state
+}
+
 export default profileReducer;

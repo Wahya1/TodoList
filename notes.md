@@ -148,7 +148,8 @@ const store = createStore(reducer);
 ````
 2- **Action** : Plain JavaScript objects that describe what should happen.
 Must have a type property.
-const increment = { type: 'INCREMENT' };
+action = (args) => ({type, payload}) // les {} pour dire qu on return un object pas pour executer du js
+const increment = { type: 'INCREMENT' }; 
 3- **Reducers**: Pure functions that update state based on the action type.
 ````JS
 const counterReducer = (state = 0, action) => {
