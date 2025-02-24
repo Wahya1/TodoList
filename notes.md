@@ -92,6 +92,78 @@ const objt ={
         }
 }
 const {user : {rating :{description :desc}} }=objt;
-````
+```
 
 - each components has a key in its context when deleting or adding u should manage it match the items id 
+- **HOC** hight order component, prend en param des components et retur des components  
+utiliser pour se centraliser la logic partager par plusieurs component 
+````JS
+import React, { Component } from "react";
+
+// Composant de base qui affiche des props
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <h1>{this.props.title}</h1>
+        <h2>{this.props.description}</h2>
+      </div>
+    );
+  }
+}
+
+// Higher-Order Component (HOC) pour ajouter une prop `title`
+const withTitle = (WrappedComponent) => {
+  return class extends Component {
+    render() {
+      return <WrappedComponent {...this.props} title="Hello World" store="store" />;
+    }
+  };
+};
+
+// Appliquer le HOC à App
+const WrappedApp = withTitle(App);
+
+// Exporter le composant enveloppé
+export default WrappedApp;
+````
+
+### Redux
+
+- **Redux** : is a state management library 
+npm install redux react-redux 
+- **core principals** :
+Single Source of Truth 🏛
+The entire application state is stored in a single JavaScript object (store).
+State is Read-Only 🔒
+The only way to change the state is by dispatching an action.
+Changes are Made with Pure Functions ⚡
+Reducers (pure functions) handle state changes based on actions.
+
+- **key concepts** :
+1- **Store** : Holds the entire application state, Created using createStore(reducer) (now replaced by configureStore from Redux Toolkit). 
+````Js
+import { createStore } from 'redux';
+const store = createStore(reducer);
+````
+2- **Action** : Plain JavaScript objects that describe what should happen.
+Must have a type property.
+const increment = { type: 'INCREMENT' };
+3- **Reducers**: Pure functions that update state based on the action type.
+````JS
+const counterReducer = (state = 0, action) => {
+    switch (action.type) {
+        case 'INCREMENT': return state + 1;
+        case 'DECREMENT': return state - 1;
+        default: return state;
+    }
+};
+````
+4- Dispatch
+sends an action to the store store.dispatch({ type: 'INCREMENT' });
+
+5- Selectors 
+Functions to get specific data from the store. const count = store.getState();
+
+6- Provider 
+to wrape the whole app for using the store 

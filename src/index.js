@@ -3,16 +3,20 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-/*strict mode is a dev mode used to detect side effects like anything that happens 
+/* <React.StrictMode> <App /> </React.StrictMode>  strict mode is a dev mode used to detect side effects like anything that happens 
 outside of React’s main rendering process 
 like fetching data or event listners or timers ....
 */
 root.render(
-  <React.StrictMode>  
-    <App />
-  </React.StrictMode>
+  <Provider store={store} >
+
+      <App />
+
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
