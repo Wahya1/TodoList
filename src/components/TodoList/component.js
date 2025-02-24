@@ -20,12 +20,28 @@ class TodoList extends Component{
         this.setState({todos: this.state.todos.filter((todo=>todo.id !== id))})
     }
 
-    
+    addTodo=() =>{
+      this.setState(
+        [...this.state.todos, {id:5, label:"physics", etat:TODO_STATE.DONE}] 
+      )
+    }
+
+    updateTodo = (updatedtodo) => {
+       this.setState({ todos: 
+        this.state.todos.map((todo) => {
+          if(todo.id == updatedtodo.id) return updatedtodo;
+          return todo;
+        })}
+       )
+    }
 
     render(){
         return <>
+           <div>
+              <button onClick={this.addTodo} >Add Todo</button>
+           </div>
           {this.state.todos.map(e=> (
-             <Todo deleteTodo={this.deleteTodo} key={e.id}  id={e.id}  label={e.label} etat={e.etat} />
+             <Todo updateTodo={this.updateTodo}  deleteTodo={this.deleteTodo} key={e.id}  id={e.id}  label={e.label} etat={e.etat} />
           ))} 
         </>
     }

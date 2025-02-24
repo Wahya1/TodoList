@@ -72,6 +72,9 @@ const updateItem = (id) => {
 ````
 using push or pop won t trigger a rerender means react wont detect any changes or updates 
 
+to access the first , second... elem in an array "array =[1,2,3,5]" using a spreed 
+console.log({[fisrt, second , ...array]})  => ["first" : 1,"second":2, 3,4,5]
+
 -  **Tests** : for unit tests or integration tests, ui or end to end tests
 use Jest > npm i Jest
 
