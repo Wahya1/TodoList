@@ -182,4 +182,9 @@ const TodoListContainer = connect(mapStateToProps, mapDispatchToProps)(TodoList)
 
 
 //every reducer has a state 
+
+/* <React.StrictMode> <App /> </React.StrictMode>  strict mode is a dev mode used to detect side effects like anything that happens 
+outside of React’s main rendering process 
+like fetching data or event listners or timers ....
+*/
 ````

@@ -1,8 +1,9 @@
 import { Component } from "react";
+import TodoContainer from "../Todo";
 
 class TodoList extends Component{
    
-  // apres qu'on a configurer redux delete et add handlers viennent des props a l aide du HOC connect
+    // apres qu'on a configurer redux delete et add handlers viennent des props a l aide du HOC connect
    
     render(){
         return <>

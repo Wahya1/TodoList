@@ -1,8 +1,6 @@
 import { Component } from "react";
 import { TODO_STATE } from "../../constant";
 import "./style.css";
-import { connect } from "react-redux";
-import { deleteTodo, updateTodo } from "../../redux/todoReducer/action";
 
 class Todo extends Component{
   
@@ -34,6 +32,4 @@ class Todo extends Component{
         )
     }
 }
-
-
 export default Todo;
