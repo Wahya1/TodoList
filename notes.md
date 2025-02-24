@@ -1,0 +1,94 @@
+# React 
+
+### Reminder 
+- **Js functions** :
+   - function declarations : function sayHello() {..} Can be called before their definition due to hoisting(js moves function declarations to the top of the script before execution.)
+   - Function Expressions : const sayHello = function() {...} Useful for passing functions as arguments or assigning them dynamically.
+   - Arrow Functions : const sayHello = () =>  {..}``Do not have their own this (useful to avoid context errors) and ideal for callbacks and methods inside objects.``
+   - Immediately Invoked Function Expressions (IIFE) :  (function() {
+   console.log("IIFE executed!");
+   })();  ``Executed immediately after being defined Useful for avoiding variable pollution in the global scope`` Can also be written using arrow functions: (() => console.log("IIFE with arrow function"))();
+   - Higher-Order Functions (Functions that take or return functions) : Can accept other functions as arguments Can return functions function applyOperation(a, b, operation) {
+   return operation(a, b);
+    }
+- **==** Compares values but allows type coercion (automatic type conversion).
+- **===** Compares both value and type. No type conversion → Values must be exactly the same.
+-  **bind(this)** : in case of using other functions then arrow fcts and  u need to save the context of the components cux fct use in the constructor bind() like after initiating the state   .. this.handChange = this.handChange.bind(this)
+
+-  **Computed Property Syntax** : using [] to access a key value instead of hardcoding it 
+````JS
+const key = "name";
+
+const obj = {
+  key: "Alice", // This creates { key: "Alice" }, NOT { name: "Alice" }
+  [key]: "Alice", // Uses the value of `key` as the property name
+};
+console.log(obj); // { name: "Alice" } Correct!
+````    
+> nxp create app react my-app
+> cd my-app
+> npm i
+> npm start
+> npm run build : to compile ur project before merging
+
+-  **component**: is a piece of the UI (user interface) that has its own logic and appearance.
+bref : React components are JavaScript functions that return markup:
+to use create react app u  install react dom and  react-scripts 
+
+- **react-scripts** : est un package utilisé  pour gérer la configuration 
+et les scripts nécessaires pour le développement, le test et le build
+d'une application React sans avoir à configurer manuellement Webpack, 
+Babel, ESLint, etc. offre des cmds cmme npm start 
+
+u can define a component using a class and override render()
+
+class Welcome extends React.Component {
+  render() {
+    return <h1>Hello, {this.props.name}</h1>;
+  }
+}
+
+- **re-render** : in React it happens when a component's state updates or it receives new props
+it happens in a top-down propagation way meaning from parent to child, Optimizing with React.memo, useCallback, and useMemo helps prevent unnecessary renders.
+
+- **states** : are read only means immutable for multiple fields objects use
+````javascript
+function handlChange(e){
+    setObject({  //set a new object to the state 
+      ...object,  //create a new array with objects fields, (...) is named spreed
+      [e.target.name]:e.target.value  // add the new value as objects name
+    });
+}
+````
+- **Arrays** : like objects updating arrays in states means treating them as immutable 
+create new one or make a copy of the oldest and make a copy to an existing one
+no push() or pop()  just filter() and map() or slice()
+````javascript 
+const updateItem = (id) => {
+  setItems(items.map(item =>  // map creates a new array
+    item.id === id ? { ...item, value: Math.random() } : item
+  ));
+};
+````
+using push or pop won t trigger a rerender means react wont detect any changes or updates 
+
+-  **Tests** : for unit tests or integration tests, ui or end to end tests
+use Jest > npm i Jest
+
+### ADD 
+
+- **Distraction** : to access an elem of an object using 
+```Js
+const objt ={
+        user:{
+            name:"egg",
+            rating:{
+                id:1,
+                description:"smth"
+            }
+        }
+}
+const {user : {rating :{description :desc}} }=objt;
+````
+
+- each components has a key in its context when deleting or adding u should manage it match the items id 

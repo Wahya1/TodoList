@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+
+.Header{
+  background-color: #61dafb;
+  border-color: rgb(202, 196, 196);
+}
+

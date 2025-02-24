@@ -5,8 +5,12 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+/*strict mode is a dev mode used to detect side effects like anything that happens 
+outside of React’s main rendering process 
+like fetching data or event listners or timers ....
+*/
 root.render(
-  <React.StrictMode>
+  <React.StrictMode>  
     <App />
   </React.StrictMode>
 );

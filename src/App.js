@@ -1,25 +1,66 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import TodoList from "./components/TodoList/component";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+class Header extends Component{
+  render()
+  {
+    let {name, lastname} = this.props;
+    return <>
+    <div>Hello {name} {lastname}</div></>
+  }
+}
+
+
+class  Settings extends Component{
+  
+  render(){
+    const {name, lastname ,handlChange} = this.props;
+
+    return <div>
+      <div>
+        <label>Nom    :</label>
+        <input onChange={handlChange} type="text"  value={name} name ="name" ></input>
+      </div>
+      <div>
+        <label>Prenom :</label>
+        <input onChange={handlChange} type="text"  value={lastname} name ="lastname"></input>
+      </div>
     </div>
-  );
+  }
+}
+
+
+class App extends Component{
+
+  constructor()
+  {
+    super();
+    this.state={
+      name: "khaoula",
+      lastname:"abassi"
+    }
+  }
+
+  handlChange =(e)=>{
+    this.setState({[e.target.name]: e.target.value}) ;
+  }
+
+  render(){
+  const {name, lastname} =this.state;
+      return  (
+        <div>
+          <div className="Header" >
+             <Header name={name} lastname={lastname} />
+          </div>
+          <div>
+             <Settings  name={name} lastname={lastname}  handlChange={this.handlChange}/>
+          </div>
+          <h2>Todo List</h2>
+             <TodoList/>
+        </div>
+      )
+  }
 }
 
 export default App;
