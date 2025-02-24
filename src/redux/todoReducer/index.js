@@ -1,6 +1,3 @@
-
-//every reducer has a state 
-
 import { TODO_STATE } from "../../constant";
 import { ADD_TODO, DELETE_TODO, UPDATE_TODO } from "./action";
 

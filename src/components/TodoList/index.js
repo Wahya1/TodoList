@@ -12,7 +12,6 @@ const mapStateToProps =(store) => {
     addTodo,
     updateTodo
 }
-const TodoListContainer = connect(mapStateToProps, mapDispatchToProps)(TodoList);  //connect est un HOK de redux  pour ajouter la logic du redux au components todolist
-//connect adds defined attributs and fcts in mapStateToProps, mapDispatchProps to the component as props 
+const TodoListContainer = connect(mapStateToProps, mapDispatchToProps)(TodoList);  
 export default TodoListContainer ;
 

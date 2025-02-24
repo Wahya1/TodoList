@@ -5,9 +5,7 @@ import { connect } from "react-redux";
 import { deleteTodo, updateTodo } from "../../redux/todoReducer/action";
 
 class Todo extends Component{
-    // No need to spread state (...state) → setState
-    //[this.props.etat] → Uses computed property syntax to set a dynamic state key.
-
+  
     handlStateChange = (e)=> {
      this.props.updateTodo({...this.props,etat : e.target.value })
     }
@@ -38,9 +36,4 @@ class Todo extends Component{
 }
 
 
-const mapDispatchToProps ={
-    deleteTodo,
-    updateTodo
-}
-
-export default connect(null, mapDispatchToProps)(Todo);
+export default Todo;

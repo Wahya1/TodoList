@@ -168,3 +168,18 @@ Functions to get specific data from the store. const count = store.getState();
 
 6- Provider 
 to wrape the whole app for using the store 
+
+
+````JS
+
+// No need to spread state (...state) → setState
+//[this.props.etat] → Uses computed property syntax to set a dynamic state key.
+
+const TodoListContainer = connect(mapStateToProps, mapDispatchToProps)(TodoList);  //connect est un HOK de redux  pour ajouter la logic du redux au components todolist
+//connect adds defined attributs and fcts in mapStateToProps, mapDispatchProps to the component as props 
+
+//window.__REDUX_DEVTOOLS_EXTENTION_COMPOSE() : midlware pour synchoroniser les modifs de store avec  redux devtools
+
+
+//every reducer has a state 
+````
